@@ -3,32 +3,32 @@ function rot13(string) {
 
  // Is the argument in the last 13 letters of the alphabet?
   let asciiAtAlphabetEnding = (asciiCode) => {
-    // Bottom-most and upper-most ascii 
-    // values for last 13 alphabetical letters.
-    const UPPER_CASE_BEGIN = 'N'.charCodeAt(0); // 'A'.charCodeAt(0);
-    const UPPER_CASE_END = 'Z'.charCodeAt(0); // 'M'.charCodeAt(0);
-    const LOWER_CASE_BEGIN = 'n'.charCodeAt(0); // 'a'.charCodeAt(0);
-    const LOWER_CASE_END = 'z'.charCodeAt(0); // 'm'.charCodeAt(0);
+    const UPPER_CASE = ['N'.charCodeAt(0), 'Z'.charCodeAt(0)];
+    const LOWER_CASE = ['n'.charCodeAt(0), 'z'.charCodeAt(0)];
   
-    return asciiWithinBounds(asciiCode, UPPER_CASE_BEGIN, UPPER_CASE_END) ||
-           asciiWithinBounds(asciiCode, LOWER_CASE_BEGIN, LOWER_CASE_END);
+    return asciiWithinBounds(asciiCode, LOWER_CASE, UPPER_CASE) ||
+           asciiWithinBounds(asciiCode, LOWER_CASE, UPPER_CASE);
   }
 
   // Is the argument in the first 13 letters of the alphabet?
   let asciiAtAlphabetBeginning = (asciiCode) => {
     // Bottom-most and upper-most ascii
     // values for first 13 alphabetical letters.
-    const UPPER_CASE_BEGIN = 'A'.charCodeAt(0);
-    const UPPER_CASE_END = 'M'.charCodeAt(0);
-    const LOWER_CASE_BEGIN = 'a'.charCodeAt(0);
-    const LOWER_CASE_END = 'm'.charCodeAt(0);
+    const UPPER_CASE = ['A'.charCodeAt(0), 'M'.charCodeAt(0)];
+    const LOWER_CASE = ['a'.charCodeAt(0), 'm'.charCodeAt(0)];
   
-    return  asciiWithinBounds(asciiCode, UPPER_CASE_BEGIN, UPPER_CASE_END) || 
-            asciiWithinBounds(asciiCode, LOWER_CASE_BEGIN, LOWER_CASE_END);
+    return  asciiWithinBounds(asciiCode, LOWER_CASE, UPPER_CASE);
   }
 
-  let asciiWithinBounds = (asciiCode, lowerBound, upperBound) => {
-    return (asciiCode >= lowerBound && asciiCode <= upperBound);
+  let asciiWithinBounds = (asciiCode, lowerCase, upperCase) => {
+    let lowerCaseLowerBound = lowerCase[0];
+    let lowerCaseUpperBound = lowerCase[1];
+
+    let upperCaseLowerBound = upperCase[0];
+    let upperCaseUpperBound = upperCase[1];
+
+    return (asciiCode >= lowerCaseLowerBound && asciiCode <= lowerCaseLowerBound) ||
+           (asciiCode >= upperCaseLowerBound && asciiCode <= upperCaseUpperBound);
   }
   
   // Perform translation based on character's
