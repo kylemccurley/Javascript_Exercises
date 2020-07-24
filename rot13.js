@@ -4,7 +4,7 @@ function rot13(string) {
  // Is the character argument in the last 13 letters of the alphabet?.
   let alphabetEnding = (charAscii) => {
     // Bottom-most and upper-most ascii 
-    // values for alphabetical letters.
+    // values for last 13 alphabetical letters.
     const UPPER_CASE_LOWER_BOUND_ASCII = 78;
     const UPPER_CASE_UPPER_BOUND_ASCII = 90;
   
@@ -21,7 +21,7 @@ function rot13(string) {
   // Is the character argument in the first 13 letters of the alphabet?.
   let alphabetBeginning = (charAscii) => {
     // Bottom-most and upper-most ascii
-    // values for alphabetical letters.
+    // values for first 13 alphabetical letters.
     const UPPER_CASE_LOWER_BOUND_ASCII = 65;
     const UPPER_CASE_UPPER_BOUND_ASCII = 77;
 
