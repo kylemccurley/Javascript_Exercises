@@ -53,5 +53,3 @@ function rot13(string) {
 
   return outcome;
 }
-
-rot13('hello world');
