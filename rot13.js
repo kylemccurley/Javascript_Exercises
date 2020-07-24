@@ -1,7 +1,7 @@
 function rot13(string) {
   const ROTATION_VALUE = 13;
 
-  // Check if the character ascii argument is in the last 13 characters of the alphabet (n-z).
+ // Is the character argument in the last 13 letters of the alphabet?.
   let alphabetEnding = (charAscii) => {
     // Bottom-most and upper-most ascii 
     // values for alphabetical letters.
@@ -18,7 +18,7 @@ function rot13(string) {
             charAscii <= LOWER_CASE_UPPER_BOUND_ASCII));
   }
 
-  // Check if character argument is in the first 13 letters of the alphabet (a-m).
+  // Is the character argument in the first 13 letters of the alphabet?.
   let alphabetBeginning = (charAscii) => {
     // Bottom-most and upper-most ascii
     // values for alphabetical letters.
