@@ -7,7 +7,6 @@ function rot13(string) {
     // values for last 13 alphabetical letters.
     const UPPER_CASE_LOWER_BOUND_ASCII = 78;
     const UPPER_CASE_UPPER_BOUND_ASCII = 90;
-  
     const LOWER_CASE_LOWER_BOUND_ASCII = 110;
     const LOWER_CASE_UPPER_BOUND_ASCII = 122;
   
@@ -24,7 +23,6 @@ function rot13(string) {
     // values for first 13 alphabetical letters.
     const UPPER_CASE_LOWER_BOUND_ASCII = 65;
     const UPPER_CASE_UPPER_BOUND_ASCII = 77;
-
     const LOWER_CASE_LOWER_BOUND_ASCII = 97;
     const LOWER_CASE_UPPER_BOUND_ASCII = 109;
   
