@@ -40,14 +40,12 @@ function rot13(string) {
   // Add or subtract rotation value?
   let translateFrom = (ascii) => {
     if (alphabetBeginning(ascii)) {
-      let translatedAscii = (ascii + ROTATION_VALUE);
-      return String.fromCharCode(translatedAscii);
+      ascii += ROTATION_VALUE;
     } else if (alphabetEnding(ascii)) {
-      let translatedAscii = (ascii - ROTATION_VALUE);
-      return String.fromCharCode(translatedAscii);
-    } else {
-      return String.fromCharCode(ascii);
+      ascii -= ROTATION_VALUE;
     }
+ 
+    return String.fromCharCode(ascii);
   }
 
 // Primary Algorithm
