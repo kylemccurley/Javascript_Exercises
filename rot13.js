@@ -37,7 +37,7 @@ function rot13(string) {
   
   // Perform translation based on character's
   // position in the alphabet.
-  // Add rotation value or subtract?
+  // Add or subtract rotation value?
   let translateFrom = (ascii) => {
     if (alphabetBeginning(ascii)) {
       let translatedAscii = (ascii + ROTATION_VALUE);
