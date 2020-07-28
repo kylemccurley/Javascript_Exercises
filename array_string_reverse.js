@@ -14,7 +14,6 @@ function reverse(inputForReversal) {
     }
   }
 
-  console.log(output);
   return output;
 }
 
