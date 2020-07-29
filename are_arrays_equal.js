@@ -1,4 +1,8 @@
 function areArraysEqual(array1, array2) {
+  if (array1.length !== array2.length) {
+    return false;
+  }
+
   let arr1 = Array.from(array1).sort();
   let arr2 = Array.from(array2).sort();
 
