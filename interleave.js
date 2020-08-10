@@ -3,8 +3,7 @@ function interleave(arr1, arr2) {
   for (let idx = 0; idx < arr1.length; idx++) {
     let arr1El = arr1[idx];
     let arr2El = arr2[idx];
-    interleavedArrays.push(arr1El);
-    interleavedArrays.push(arr2El);
+    interleavedArrays.push(arr1El, arr2El);
   }
 
   return interleavedArrays;
