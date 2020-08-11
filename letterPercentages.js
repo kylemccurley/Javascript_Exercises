@@ -1,13 +1,13 @@
- function letterPercentages(str) {
+function letterPercentages(str) {
   let outcome = { lowercase: 0, uppercase: 0, neither: 0 };
-  let uppercaseCount = str.match(/[A-Z]/g);
-  let lowercaseCount = str.match(/[a-z]/g);
+  let uppercaseCount = str.match(/[A-Z]/g).length;
+  let lowercaseCount = str.match(/[a-z]/g).length;
   let neitherCount = str.length - (uppercaseCount + lowercaseCount);
 
   return {
-           uppercase: ((uppercaseCount / str.length) * 100)},
-           lowercase: ((lowercaseCount / str.length) * 100),
-           neither: ((neitherCount) / str.length) * 100), 
+           uppercase: ((uppercaseCount / str.length) * 100).toFixed(2),
+           lowercase: ((lowercaseCount / str.length) * 100).toFixed(2),
+           neither: ((neitherCount / str.length) * 100).toFixed(2), 
           }
 }
 
