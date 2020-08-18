@@ -1,10 +1,9 @@
 function myFilter(array, func) {
   let filteredElements = [];
-  for (let el of array) {
+  array.forEach(el => {
     if (func(el)) {
-      filteredElements.push(el);
-    }
-  }
+      filteredElements.push(el)
+  })
 
   return filteredElements;
 }
