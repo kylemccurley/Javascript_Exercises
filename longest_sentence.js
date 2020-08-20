@@ -1,4 +1,4 @@
-let longText = 'Four score and seven years ago our fathers brought forth' +
+const longText = 'Four score and seven years ago our fathers brought forth' +
   ' on this continent a new nation, conceived in liberty, and' +
   ' dedicated to the proposition that all men are created' +
   ' equal.' +
@@ -29,20 +29,27 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
   ' earth.';
 
 function longestSentence(text) {
-  const SENTENCE_REGEX = /\b\w[^.?!]+[.?!]*/g;
+  const SENTENCE_REGEX = /\b\w[^.?!]+[.?!]+/g;
   const WORD_PARSING_REGEX = /[^.!?\s]+[.?!]*/g;
-  let parsedSentences = text.match(SENTENCE_REGEX);
-  let largestSentence= parsedSentences.reduce(findLongest).match(WORD_PARSING_REGEX).join(' ');
+  let parsedSentences = text.match(SENTENCE_REGEX) || noSentence();
+  let largestSentence= parsedSentences.reduce(findLongestSentence).match(WORD_PARSING_REGEX).join(' ');
   let wordsOfLargestSentence = largestSentence.match(WORD_PARSING_REGEX);
+  var error;
 
   console.log(largestSentence + '\n');
   console.log(`The longest sentence has ${wordsOfLargestSentence.length} words. \n`);
   
-  
-  function findLongest(largestSentence, currentSentence) {
+  function findLongestSentence(largestSentence, currentSentence) {
     let parsedWordsLargest = largestSentence.match(WORD_PARSING_REGEX);
     let parsedWordsCurrent = currentSentence.match(WORD_PARSING_REGEX);
     return parsedWordsCurrent.length >= parsedWordsLargest.length ? currentSentence : largestSentence;
+  }
+  
+  function noSentence() {
+    
+    error = new Error('No sentences were found after parsing the text.');
+    error.name = 'ParsingError';
+    throw error;
   }
 }
   
@@ -50,11 +57,15 @@ longestSentence(longText);
 
 /*
 It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
-*/
-// The longest sentence has 86 words.
 
-longestSentence('...hello'); // Sentences starting with punctation -> Ignore punctuation.
+The longest sentence has 86 words.
+*/
+
+
+// longestSentence('...hello.'); // Sentences without ending punctuation throws an error.
 longestSentence('.?  how ? r u?'); // Sentences with words of 1 letter
 longestSentence("I''m not sure...what's the answer?'"); // Two of Same Length. Choose First. Quotes counted in word parsing
-longestSentence('yikes'); // Parse out 1 sentence with 1 word.
+// longestSentence('yikes'); // Throws an error without punctuation.
 longestSentence('hello   world. Goodbye      cruel word!'); // Parse out multiple spaces in output.
+
+
