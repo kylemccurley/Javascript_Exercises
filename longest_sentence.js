@@ -62,10 +62,10 @@ The longest sentence has 86 words.
 */
 
 
-// longestSentence('...hello.'); // Sentences without ending punctuation throws an error.
+// longestSentence('...hello.'); // Sentences without ending punctuation will throw an error.
 longestSentence('.?  how ? r u?'); // Sentences with words of 1 letter
 longestSentence("I''m not sure...what's the answer?'"); // Two of Same Length. Choose First. Quotes counted in word parsing
-// longestSentence('yikes'); // Throws an error without punctuation.
+// longestSentence('yikes'); // Throws an error without ending punctuation.
 longestSentence('hello   world. Goodbye      cruel word!'); // Parse out multiple spaces in output.
 
 
