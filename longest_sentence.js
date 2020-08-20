@@ -29,12 +29,12 @@ const longText = 'Four score and seven years ago our fathers brought forth' +
   ' earth.';
 
 function longestSentence(text) {
+  var error;
   const SENTENCE_REGEX = /\b\w[^.?!]+[.?!]+/g;
   const WORD_PARSING_REGEX = /[^.!?\s]+[.?!]*/g;
   let parsedSentences = text.match(SENTENCE_REGEX) || noSentence();
   let largestSentence= parsedSentences.reduce(findLongestSentence).match(WORD_PARSING_REGEX).join(' ');
   let wordsOfLargestSentence = largestSentence.match(WORD_PARSING_REGEX);
-  var error;
 
   console.log(largestSentence + '\n');
   console.log(`The longest sentence has ${wordsOfLargestSentence.length} words. \n`);
