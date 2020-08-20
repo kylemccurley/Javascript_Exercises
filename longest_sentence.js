@@ -29,7 +29,6 @@ const longText = 'Four score and seven years ago our fathers brought forth' +
   ' earth.';
 
 function longestSentence(text) {
-  var error;
   const SENTENCE_REGEX = /\b\w[^.?!]+[.?!]+/g;
   const WORD_PARSING_REGEX = /[^.!?\s]+[.?!]*/g;
   let parsedSentences = text.match(SENTENCE_REGEX) || noSentence();
@@ -46,7 +45,7 @@ function longestSentence(text) {
   }
   
   function noSentence() {
-    error = new Error('No sentences were found after parsing the text.');
+    let error = new Error('No sentences were found after parsing the text.');
     error.name = 'ParsingError';
     throw error;
   }
