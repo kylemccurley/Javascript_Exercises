@@ -46,7 +46,6 @@ function longestSentence(text) {
   }
   
   function noSentence() {
-    
     error = new Error('No sentences were found after parsing the text.');
     error.name = 'ParsingError';
     throw error;
