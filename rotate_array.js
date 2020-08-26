@@ -1,16 +1,9 @@
 function rotateArray(arr) {
-  if (!arr) {
-    return [];
+  if (!Array.isArray(arr)) {
+    return;
   }
 
-  let outcome = [];
-  for (let i = 1; i < arr.length; i++) {
-    let char = arr[i];
-    outcome.push(char);
-  }
-
-
-  return outcome.concat(arr[0]);
+  return arr.slice(1) + arr[0];
 }
 
 rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
