@@ -1,35 +1,93 @@
+/*
+You have a bank of switches before you, numbered from 1 to n. Every switch is connected to exactly one light that is initially off. You walk down the row of switches and toggle every one of them. You walk back to the beginning of the row and start another pass. On this second pass, you toggle switches 2, 4, 6, and so on. On the third pass, you go back to the beginning again, this time toggling switches 3, 6, 9, and so on. You continue to repeat this process until you have gone through n repetitions.
+
+Write a program that takes one argument—the total number of switches—and returns an array of the lights that are on after n repetitions.
+--------------------------------------------------------------
+Input: The total number of switches
+Output: Array of all lights that are on after n repetitions
+
+Rules/Requirements:
+  - How to calculate/iterate through each element:
+    - First Pass: Toggle every 1st switch (1, 2, 3, 4, 5)
+    - Second Pass: Toggle every 2nd switch (2, 4, 6, 8)
+    - Third Pass: Toggle every 3rd switch (3, 6, 9)
+    ...
+    - Ninth Pass: Every 9th switch (9)
+  - Every Toggle: Switching state
+  - Stop iteration at the nth reptition
+  - Lights are represented as a number
+
+Data Structure:
+  - Hash: For State Tracking:
+    1 => 'on'
+    2 => 'off'
+  - Boolean: State Representation
+
+Algorithm: Given a number representing the number of switches: n
+  - Generate a hash of lights upto n:
+    - State must be off for all lights
+  
+  Toggle Every Nth Light:
+  - Iterate from 1 upto n: |nth| (1..n)
+    - Toggle every nth light (light num (key) % nth === 0?)
+      - 'on'? => 'off'
+      - 'off'? => 'on'
+
+  - Find all lights that are on:
+    - Search for a true value:
+      - Add the (index + 1) of the true value to a new array
+
+  - Return the calculated array of lights that are on
+*/
+
 function lightsOn(switches) {
+  // initialize lights
+  // Iterate from 1 to switches: |nth|
+    // Toggle nth lights
+  // Find all keys of the hash with a value of 'off'
+
   let lights = initializeLights(switches);
-  for (let div = 1; div <= switches; div++) {
-    toggleEveryNthLight(div);
+  for (let toggleNum = 1; toggleNum <= switches; toggleNum++) {
+    lights = toggleEveryNthLight(toggleNum);
   }
 
-  function logIdxOfLights() {
-    let toggledLightIdx = []
-    for (let i = 0; i < lights.length; i++) {
-      let el = lights[i];
-      if (el) {
-        toggledLightIdx.push(i + 1);
+  console.log(lightsOn(lights));
+
+  function initializeLights(n) {
+    let lights = {};
+    for (let lightNum = 1; lightNum <= n; lightNum++) {
+      lights[lightNum] = 'off';
+    }
+
+    return lights;
+  }
+
+  function toggleEveryNthLight(nth) {
+    let toggledLights = {};
+    for (let [light, state] of Object.entries(lights)) {
+      if (light % nth === 0) {
+        toggledLights[light] = toggle(state);
+      } else {
+        toggledLights[light] = state;
       }
     }
 
-    return toggledLightIdx;
-  }
+    return toggledLights;
 
-
-  function toggleEveryNthLight(n) {
-    for (let i = n; i <= lights.length; i += n) {
-      lights[i - 1] = (!!lights[i - 1]) ? false : true;
+    function toggle(state) {
+      return state === 'off' ? 'on' : 'off';
     }
   }
 
-  function initializeLights(n) {
-    let outcome = [];
-    for (let i = 0; i < n; i++) {
-      outcome.push(false);
+  function lightsOn(hsh) {
+    let lightsOn = [];
+    for (let [light, state] of Object.entries(hsh)) {
+      if (state === 'on') {
+        lightsOn.push(Number(light));
+      }
     }
 
-    return outcome;
+    return lightsOn;
   }
 }
 
